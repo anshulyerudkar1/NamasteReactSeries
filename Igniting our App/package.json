@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/anshulyerudkar1/NamasteReactSeries/issues"
   },
-  "homepage": "https://github.com/anshulyerudkar1/NamasteReactSeries#readme"
+  "homepage": "https://github.com/anshulyerudkar1/NamasteReactSeries#readme",
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  }
 }
