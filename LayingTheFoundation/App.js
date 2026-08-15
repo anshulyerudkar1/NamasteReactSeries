@@ -41,7 +41,7 @@ const HeadingComponent = () => (
         {title}
         <h1 className="heading">Hello world from component</h1>
     </div>
-)
+);
 
 // const divComponent = (<div>
 //     <HeadingComponent/>
