@@ -20,3 +20,16 @@
 - Address
 - Contact
 - \*/
+
+#React Hooks
+
+## (Normal JS utility functions)
+
+### 2 IMP Hooks
+
+- useState() - This is generates State Variables in React
+- useEffect() -
+
+- useMemo
+- useCallback
+- useRef
