@@ -7,6 +7,8 @@ const Body = () => {
 
     // State Variable - Super powerful variable
     const [listOfRestaurant, setListOfRestaurant] = useState([]);
+    const [searchText, setSearchText] = useState("");
+    const [filteredListOfRestaurant, setFilteredListOfRestaurant] = useState([]);
 
     //Normal JS Variable
     // let listOfRestaurants = [
@@ -46,9 +48,27 @@ const Body = () => {
         fetchData();
     }, []);
 
+    // const fetchData = async() => {
+    //     const data = await fetch (
+    //         "https://corsproxy.io/?url=" + CDN_URL + "/listRestaurants"
+    //     );
+
+    //     const json =await data.json();
+    //     console.log("API Response:", json);
+
+    //     // Extract restaurant list from API's nested response (data is double-nested: json.data.data)
+    //     const restaurants = 
+    //         json?.data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants 
+    //         || json?.data?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    //         || [];
+    //     console.log("Restaurants:", restaurants);
+    //     setListOfRestaurant(restaurants);
+    //     setFilteredListOfRestaurant(restaurants);
+    // }
+
     const fetchData = async() => {
         const data = await fetch (
-            "https://corsproxy.io/?url=" + CDN_URL + "/listRestaurants"
+            "https://corsproxy.io/?url=" + CDN_URL
         );
 
         const json =await data.json();
@@ -56,11 +76,12 @@ const Body = () => {
 
         // Extract restaurant list from API's nested response (data is double-nested: json.data.data)
         const restaurants = 
-            json?.data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants 
-            || json?.data?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+            json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants 
+            || json?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
             || [];
         console.log("Restaurants:", restaurants);
         setListOfRestaurant(restaurants);
+        setFilteredListOfRestaurant(restaurants);
     }
 
     // // Conditional Rendering
@@ -72,6 +93,27 @@ const Body = () => {
         <div className="body">
             {/* <div className="search">Search</div> */}
             <div className="filter">
+                <div className="search">
+                    <input 
+                        type="text" 
+                        className="search-box" 
+                        placeholder="Search" 
+                        value={searchText}
+                        onChange={(e) => setSearchText(e.target.value)}
+                    />
+                    <button 
+                        className="search-btn"
+                        onClick={() => {
+                            console.log("Search button clicked");
+                            const filteredRestaurantList = listOfRestaurant.filter(
+                                (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                            )
+                            setFilteredListOfRestaurant(filteredRestaurantList)
+                        }}
+                    >
+                        Search
+                    </button>
+                </div>
                 <button 
                     className="filter-btn" 
                     onClick={() => {
@@ -86,7 +128,7 @@ const Body = () => {
                 </button>
             </div>
             <div className="res-container">
-                {listOfRestaurant.map((restaurants) => (
+                {filteredListOfRestaurant.map((restaurants) => (
                     <RestuarantCard key={restaurants?.info?.id} resData={restaurants?.info} />
                 ))}
             </div>
