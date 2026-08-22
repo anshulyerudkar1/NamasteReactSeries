@@ -1,0 +1,31 @@
+{
+  "name": "findingthepath_ep7",
+  "version": "1.0.0",
+  "description": "Finding the path - episode 7",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/anshulyerudkar1/NamasteReactSeries.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Anshul Yerudkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anshulyerudkar1/NamasteReactSeries/issues"
+  },
+  "homepage": "https://github.com/anshulyerudkar1/NamasteReactSeries#readme",
+  "dependencies": {
+    "parcel": "^2.16.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}

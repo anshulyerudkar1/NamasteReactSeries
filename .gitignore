@@ -1,6 +1,7 @@
 node_modules
-/Assignments/Assignment1/node_modules
-/Assignments/Assignment2/node_modules
-/LayingTheFoundation/node_modules
+node_modules_old
+# /Assignments/Assignment1/node_modules
+# /Assignments/Assignment2/node_modules
+# /LayingTheFoundation/node_modules
 dist
 .parcel-cache
