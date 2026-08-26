@@ -1,0 +1,33 @@
+{
+  "name": "assignment4",
+  "version": "1.0.0",
+  "description": "This is my 4 the assigment of namaste react ",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/anshulyerudkar1/NamasteReactSeries.git"
+  },
+  "keywords": [
+    "react",
+    "javascript"
+  ],
+  "author": "Anshul Yerudkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anshulyerudkar1/NamasteReactSeries/issues"
+  },
+  "homepage": "https://github.com/anshulyerudkar1/NamasteReactSeries#readme",
+  "dependencies": {
+    "parcel": "^2.16.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+
+}
