@@ -1,10 +1,10 @@
 import RestaurantCart from "./RestaurantCart";
-import { resList } from "../utils/mokData";
 
-const RestaurantList = () => {
+
+const RestaurantList = ({RestList}) => {
     return (
         <div className="res-container">
-            {resList.map((res) => (
+            {RestList.map((res) => (
                 <RestaurantCart key={res.data.id} resData={res} />
             ))}
         </div>
