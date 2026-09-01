@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const User = (props) => {
     
@@ -6,6 +6,17 @@ const User = (props) => {
 
     // const [count] = useState(0);
     // const [count2] = useState(2);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            console.log("Timer is running");
+        }, 1000);
+
+        return () => {
+            clearInterval(timer);
+            console.log("Timer is cleared");
+        }
+    }, []);
 
     return (
         <div className="user-card">

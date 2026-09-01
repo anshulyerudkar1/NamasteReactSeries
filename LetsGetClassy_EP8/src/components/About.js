@@ -21,8 +21,8 @@ class About extends Component {
 
                 {/* <User name={"Anshul Yerudkar (Functional Component)"} location={"Pune (Functional Component)"}  /> */}
                 <UserClass name={"Anshul Yerudkar (Class Component)"} location={"Pune (Class Component)"} count={"First "} />
-                <UserClass name={"Aditya Yerudkar (Class Component)"} location={"Pune (Class Component)"} count={"Second "} />
-                <UserClass name={"Amol Yerudkar (Class Component)"} location={"Pune (Class Component)"} count={"Third "} />
+                {/* <UserClass name={"Aditya Yerudkar (Class Component)"} location={"Pune (Class Component)"} count={"Second "} /> */}
+                {/* <UserClass name={"Amol Yerudkar (Class Component)"} location={"Pune (Class Component)"} count={"Third "} /> */}
             </div>
         )
     }
