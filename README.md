@@ -33,3 +33,9 @@
 - useMemo
 - useCallback
 - useRef
+
+#### Optimizing app / Smaller bundls of file
+
+- Chunking
+- Code Splitting
+- Dynamic Bundling
