@@ -11,40 +11,6 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredListOfRestaurant, setFilteredListOfRestaurant] = useState([]);
 
-  //Normal JS Variable
-  // let listOfRestaurants = [
-  //     {
-  //         data: {
-  //             id: "334475",
-  //             name: "KFC",
-  //             cloudinaryImageId: "bdcd233971b7c81bf77e1fa4471280eb",
-  //             cuisines: ["Biryani", "North Indian", "Asian"],
-  //             avgRating: "3.8",
-  //             deliveryTime: "38 minutes",
-  //         }
-  //     },
-  //     {
-  //         data: {
-  //             id: "334476",
-  //             name: "Dominos",
-  //             cloudinaryImageId: "bdcd233971b7c81bf77e1fa4471280eb",
-  //             cuisines: ["Biryani", "North Indian", "Asian"],
-  //             avgRating: "4.4",
-  //             deliveryTime: "38 minutes",
-  //         }
-  //     },
-  //     {
-  //         data: {
-  //             id: "334477",
-  //             name: "MCD",
-  //             cloudinaryImageId: "bdcd233971b7c81bf77e1fa4471280eb",
-  //             cuisines: ["Biryani", "North Indian", "Asian"],
-  //             avgRating: "4.2",
-  //             deliveryTime: "38 minutes",
-  //         }
-  //     }
-  // ];
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -67,29 +33,6 @@ const Body = () => {
     setFilteredListOfRestaurant(restaurants);
   };
 
-  // const fetchData = async() => {
-  //     const data = await fetch (
-  //         "https://corsproxy.io/?url=" + CDN_URL
-  //     );
-
-  //     const json =await data.json();
-  //     console.log("API Response:", json);
-
-  //     // Extract restaurant list from API's nested response (data is double-nested: json.data.data)
-  //     const restaurants =
-  //         json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-  //         || json?.data?.cards?.[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-  //         || [];
-  //     console.log("Restaurants:", restaurants);
-  //     setListOfRestaurant(restaurants);
-  //     setFilteredListOfRestaurant(restaurants);
-  // }
-
-  // // Conditional Rendering
-  // if(listOfRestaurant.length === 0){
-  //     return <Shimmer />
-  // }
-
   const onlineStatus = useOnlineStatus();
 
   if (onlineStatus === false)
@@ -107,17 +50,17 @@ const Body = () => {
   ) : (
     <div className="body">
       {/* <div className="search">Search</div> */}
-      <div className="filter">
+      <div className="flex">
         <div className="search">
           <input
             type="text"
-            className="search-box"
+            className="ml-4 px-4 py-1 border border-solid border-black rounded-lg"
             placeholder="Search"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
           <button
-            className="search-btn"
+            className="px-4 py-1 bg-green-100 m-4 rounded-lg border border-solid border-black"
             onClick={() => {
               console.log("Search button clicked");
               const filteredRestaurantList = listOfRestaurant.filter((res) =>
@@ -130,7 +73,7 @@ const Body = () => {
           </button>
         </div>
         <button
-          className="filter-btn"
+          className="px-4 py-1 bg-green-100 m-4 rounded-lg border border-solid border-black"
           onClick={() => {
             const filteredList = listOfRestaurant.filter(
               (res) => res.info.avgRating > 4,
@@ -142,7 +85,7 @@ const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filteredListOfRestaurant.map((restaurants) => (
           <Link
             key={restaurants?.info?.id}
