@@ -94,9 +94,12 @@ const Body = () => {
 
   if (onlineStatus === false)
     return (
-      <h1 className="offline">
-        🔴 Looks like you're offline!! Please check your internet connection 🔴
-      </h1>
+      <div>
+        <h1>
+          🔴 Looks like you're offline!! Please check your internet connection
+          🔴
+        </h1>
+      </div>
     );
 
   return listOfRestaurant.length === 0 ? (
