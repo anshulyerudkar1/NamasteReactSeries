@@ -11,22 +11,6 @@ const RestaurantMenu = () => {
   ///////// Using custom hook /////////
   const resInfo = useRestaurantMenu(resId);
 
-  ///////// Without using custom hook /////////
-  //const [resInfo, setResInfo] = useState(null);
-  // useEffect(() => {
-  //     fetchMenu();
-  // }, []);
-
-  // const fetchMenu = async () => {
-  //     const data = await fetch(
-  //         CROSORGPROXY_URL + CDN_URL + "/listRestaurantMenu/" + resId
-  //     );
-
-  //     const jsonData = await data.json();
-  //     //console.log(jsonData);
-  //     setResInfo(jsonData);
-  // };
-
   if (resInfo === null) return <Shimmer />;
 
   const { name, cuisines, costForTwoMessage } =

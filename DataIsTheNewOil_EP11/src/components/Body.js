@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestuarantCard from "./RestuarantCard.js";
+import RestuarantCard, { withPrmotedLable } from "./RestuarantCard.js";
 import { CDN_URL, CROSORGPROXY_URL } from "../utils/constants.js";
 import Shimmer from "./Shimmer.js";
 import { Link } from "react-router-dom";
@@ -10,6 +10,8 @@ const Body = () => {
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredListOfRestaurant, setFilteredListOfRestaurant] = useState([]);
+
+  const RestuarantCardPromoted = withPrmotedLable(RestuarantCard);
 
   useEffect(() => {
     fetchData();
@@ -91,7 +93,15 @@ const Body = () => {
             key={restaurants?.info?.id}
             to={"restaurants/" + restaurants?.info?.id}
           >
-            <RestuarantCard resData={restaurants?.info} />
+            {/* 
+                if the restaurant is promoted then add a promoted label to it
+                In my api can't gives me promoted so insted of that i have use veg and accordingly set the pramoted label
+            */}
+            {restaurants?.info?.veg ? (
+              <RestuarantCardPromoted resData={restaurants?.info} />
+            ) : (
+              <RestuarantCard resData={restaurants?.info} />
+            )}
           </Link>
         ))}
       </div>
