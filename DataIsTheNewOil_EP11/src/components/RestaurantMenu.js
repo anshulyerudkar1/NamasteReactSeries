@@ -3,9 +3,11 @@ import { CDN_URL, CROSORGPROXY_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
+  const [showIndex, setShowIndex] = useState(0);
   //console.log(resId);
 
   ///////// Using custom hook /////////
@@ -20,9 +22,9 @@ const RestaurantMenu = () => {
     resInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]
       .card.card || {};
 
-  console.log(
-    resInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards,
-  );
+  // console.log(
+  //   resInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards,
+  // );
 
   const categories =
     resInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -31,7 +33,7 @@ const RestaurantMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory",
     );
 
-  console.log("categories", categories);
+  //console.log("categories", categories);
 
   return (
     <div className="text-center">
@@ -41,10 +43,12 @@ const RestaurantMenu = () => {
       </p>
 
       {/* Categories Accordion */}
-      {categories.map((category) => (
+      {categories.map((category, index) => (
         <RestaurantCategory
-          key={category.card.title}
-          data={category.card.itemCards}
+          key={category.card.card.title}
+          data={category.card.card}
+          showItems={index === showIndex ? true : false}
+          setShowIndex={() => setShowIndex(index)}
         />
       ))}
     </div>
