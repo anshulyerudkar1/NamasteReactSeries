@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "../index.css";
 import Header from "./components/Header.js";
@@ -25,18 +25,18 @@ const About = lazy(() => import("./components/About.js"));
 
 const AppLayout = () => {
   //Authentication
-  const { userName, setUserName } = useState();
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
     // make an API call to get the user info
     const data = {
       name: "Anshul Y",
     };
-    setUserName(data);
+    setUserName(data.name);
   }, []);
 
   return (
-    <UserContext.Provider value={{ userName, setUserName }}>
+    <UserContext.Provider value={{ loggedInUser: userName }}>
       <div className="app">
         <Header />
         <Outlet />
