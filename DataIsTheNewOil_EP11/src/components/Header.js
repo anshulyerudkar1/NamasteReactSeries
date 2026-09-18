@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   //let btnName = "Login";
   const [btnName, setBtnName] = useState("Login");
 
   const onlineStatus = useOnlineStatus();
+
+  const { loggedInUser } = useContext(UserContext);
 
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg sm:bg-yellow-50">
@@ -44,6 +47,11 @@ const Header = () => {
           >
             {btnName}
           </button>
+
+          {/* resolving props drilling using Context API */}
+          <li className="ml-1 px-6 py-2 border border-solid border-gray-200 rounded-lg bg-orange-300">
+            {loggedInUser}
+          </li>
         </ul>
       </div>
     </div>

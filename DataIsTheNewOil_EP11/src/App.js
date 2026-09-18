@@ -9,6 +9,7 @@ import Contact from "./components/Contact.js";
 import Error from "./components/Error.js";
 import Cart from "./components/Cart.js";
 import RestaurantMenu from "./components/RestaurantMenu.js";
+import UserContext from "./utils/UserContext";
 // import Grocery from "./components/Grocery.js";
 
 // Code chunking
@@ -23,11 +24,24 @@ const Grocery = lazy(() => import("./components/Grocery.js"));
 const About = lazy(() => import("./components/About.js"));
 
 const AppLayout = () => {
+  //Authentication
+  const { userName, setUserName } = useState();
+
+  useEffect(() => {
+    // make an API call to get the user info
+    const data = {
+      name: "Anshul Y",
+    };
+    setUserName(data);
+  }, []);
+
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{ userName, setUserName }}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 
