@@ -10,6 +10,8 @@ import Error from "./components/Error.js";
 import Cart from "./components/Cart.js";
 import RestaurantMenu from "./components/RestaurantMenu.js";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore.js";
 // import Grocery from "./components/Grocery.js";
 
 // Code chunking
@@ -36,12 +38,14 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div className="app">
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
